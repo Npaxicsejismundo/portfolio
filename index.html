@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ivan Uriel Sejismundo — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,400;0,450;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── DESIGN TOKENS ─────────────────────────────────────── */
+    :root {
+      --canvas:       #F3F0EE;
+      --lifted:       #FCFBFA;
+      --ink:          #141413;
+      --slate:        #696969;
+      --granite:      #555555;
+      --dust:         #D1CDC7;
+      --signal:       #CF4500;
+      --arc:          #F37338;
+      --white:        #FFFFFF;
+      --ghost:        #E4DDD5;
+
+      --shadow-nav:   rgba(0,0,0,0.04) 0px 4px 24px 0px;
+      --shadow-card:  rgba(0,0,0,0.08) 0px 24px 48px 0px;
+      --shadow-deep:  rgba(0,0,0,0.25) 0px 70px 110px 0px;
+
+      --font: 'Sofia Sans', SofiaSans, Arial, sans-serif;
+
+      --r-btn:  20px;
+      --r-hero: 40px;
+      --r-pill: 999px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--canvas);
+      color: var(--ink);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ── FLOATING PILL NAV ────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      background: var(--white);
+      border-radius: var(--r-pill);
+      box-shadow: var(--shadow-nav);
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      white-space: nowrap;
+    }
+
+    .nav-logo {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 150ms ease;
+    }
+
+    .nav-links a:hover { color: var(--arc); }
+
+    .nav-cta {
+      background: var(--ink);
+      color: var(--canvas) !important;
+      padding: 6px 18px;
+      border-radius: var(--r-btn);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: opacity 150ms ease;
+      flex-shrink: 0;
+    }
+
+    .nav-cta:hover { opacity: 0.82; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9rem 3rem 6rem;
+      background: var(--canvas);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ghost watermark */
+    .hero::before {
+      content: 'PORTFOLIO';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(80px, 18vw, 200px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--ghost);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 1.5rem;
+    }
+
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--arc);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── BUTTONS ──────────────────────────────────────────── */
+    .btn-ink {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--ink);
+      color: var(--canvas);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-btn);
+      padding: 10px 28px;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      transition: opacity 150ms ease;
+      cursor: pointer;
+    }
+
+    .btn-ink:hover { opacity: 0.80; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--white);
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-btn);
+      padding: 10px 28px;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      transition: opacity 150ms ease;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover { opacity: 0.70; }
+
+    /* ── HERO STATS ───────────────────────────────────────── */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(20,20,19,0.12);
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-size: 2.25rem;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate);
+      margin-top: 4px;
+    }
+
+    /* ── ORBITAL ARC SVG ──────────────────────────────────── */
+    .arc-divider {
+      width: 100%;
+      height: 60px;
+      overflow: visible;
+      display: block;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────── */
+    .section { padding: 6rem 3rem; }
+    .section-lifted { background: var(--lifted); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 3rem; }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-top: 0.5rem;
+    }
+
+    /* ── GHOST WATERMARK ──────────────────────────────────── */
+    .ghost-text {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--ghost);
+      line-height: 0.9;
+      pointer-events: none;
+      user-select: none;
+      margin-bottom: -1.5rem;
+      position: relative;
+      z-index: 0;
+    }
+
+    .ghost-content { position: relative; z-index: 1; }
+
+    /* ── ABOUT ────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--granite);
+      margin-bottom: 1rem;
+    }
+
+    .fact-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 2rem;
+      border: 1px solid rgba(20,20,19,0.12);
+      border-radius: var(--r-btn);
+      overflow: hidden;
+    }
+
+    .fact {
+      padding: 1.25rem 1.5rem;
+      border-right: 1px solid rgba(20,20,19,0.12);
+      border-bottom: 1px solid rgba(20,20,19,0.12);
+    }
+
+    .fact:nth-child(2n) { border-right: none; }
+    .fact:nth-child(3), .fact:nth-child(4) { border-bottom: none; }
+
+    .fact-label {
+      font-size: 0.69rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--slate);
+      margin-bottom: 0.3rem;
+    }
+
+    .fact-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* Code card */
+    .code-stadium {
+      background: var(--ink);
+      border-radius: var(--r-hero);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .code-block {
+      font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: rgba(252,251,250,0.6);
+    }
+
+    .ck { color: #9fc9a2; }
+    .cs { color: #dfa88f; }
+    .cv { color: #9fbbe0; }
+    .cd { color: rgba(252,251,250,0.25); }
+
+    /* ── SKILLS ───────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(20,20,19,0.12);
+      border: 1px solid rgba(20,20,19,0.12);
+      border-radius: var(--r-btn);
+      overflow: hidden;
+    }
+
+    .skill-card {
+      background: var(--lifted);
+      padding: 2rem;
+      transition: background 150ms ease;
+    }
+
+    .skill-card:hover { background: var(--white); }
+
+    .skill-card-title {
+      font-size: 0.69rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--slate);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .skill-card-title::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--arc);
+      flex-shrink: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: var(--canvas);
+      color: var(--granite);
+      padding: 4px 14px;
+      border-radius: var(--r-pill);
+      border: 1px solid rgba(20,20,19,0.15);
+      transition: color 150ms ease, border-color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .tag:hover {
+      color: var(--ink);
+      border-color: rgba(20,20,19,0.4);
+    }
+
+    /* ── PROJECTS ─────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--lifted);
+      border: 1px solid rgba(20,20,19,0.1);
+      border-radius: var(--r-hero);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 200ms ease, transform 200ms ease;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-card);
+      transform: translateY(-3px);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-badge {
+      font-size: 0.69rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 14px;
+      border-radius: var(--r-pill);
+      border: 1.5px solid;
+    }
+
+    .badge-capstone { color: var(--arc); border-color: var(--arc); }
+    .badge-work     { color: #1f8a65; border-color: #1f8a65; }
+    .badge-personal { color: var(--slate); border-color: var(--dust); }
+
+    .project-name {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--granite);
+      flex: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(20,20,19,0.1);
+      flex-wrap: wrap;
+    }
+
+    .project-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--canvas);
+      border: 1px solid rgba(20,20,19,0.15);
+      padding: 5px 14px;
+      border-radius: var(--r-pill);
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+
+    .project-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── TIMELINE ─────────────────────────────────────────── */
+    .timeline { position: relative; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 8px; bottom: 8px;
+      width: 1px;
+      background: rgba(20,20,19,0.15);
+    }
+
+    .timeline-item { display: flex; gap: 2rem; }
+
+    .timeline-dot {
+      width: 36px; height: 36px;
+      min-width: 36px;
+      background: var(--canvas);
+      border: 1.5px solid rgba(20,20,19,0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      margin-top: 2px;
+      font-size: 0.6rem;
+      color: var(--arc);
+    }
+
+    .timeline-content {
+      background: var(--lifted);
+      border: 1px solid rgba(20,20,19,0.1);
+      border-radius: var(--r-btn);
+      padding: 1.75rem;
+      flex: 1;
+      transition: box-shadow 200ms ease;
+    }
+
+    .timeline-content:hover { box-shadow: var(--shadow-card); }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .exp-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .exp-company {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--arc);
+      margin-top: 0.2rem;
+    }
+
+    .exp-date {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--slate);
+      background: var(--canvas);
+      border: 1px solid rgba(20,20,19,0.15);
+      padding: 3px 12px;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--granite);
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--dust);
+      font-size: 0.75rem;
+      top: 0.2em;
+    }
+
+    /* ── EDUCATION ────────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .edu-card {
+      background: var(--lifted);
+      border: 1px solid rgba(20,20,19,0.1);
+      border-radius: var(--r-hero);
+      padding: 2.5rem;
+      transition: box-shadow 200ms ease;
+    }
+
+    .edu-card:hover { box-shadow: var(--shadow-card); }
+
+    .edu-degree {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .edu-school {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--arc);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-year {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--slate);
+    }
+
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(20,20,19,0.12);
+      border: 1px solid rgba(20,20,19,0.12);
+      border-radius: var(--r-btn);
+      overflow: hidden;
+    }
+
+    .training-card {
+      background: var(--lifted);
+      padding: 1.75rem;
+      transition: background 150ms ease;
+    }
+
+    .training-card:hover { background: var(--white); }
+
+    .training-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .training-meta {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--slate);
+      margin-bottom: 1rem;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-headline {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--granite);
+      margin-bottom: 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--canvas);
+      color: var(--ink);
+      border: 1.5px solid rgba(20,20,19,0.25);
+      padding: 8px 20px;
+      border-radius: var(--r-btn);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: border-color 150ms ease, opacity 150ms ease;
+    }
+
+    .social-link:hover { border-color: var(--ink); }
+
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--lifted);
+      border: 1px solid rgba(20,20,19,0.1);
+      border-radius: var(--r-btn);
+      text-decoration: none;
+      color: var(--ink);
+      transition: box-shadow 200ms ease;
+    }
+
+    .contact-item:hover { box-shadow: var(--shadow-card); }
+
+    .contact-item-icon {
+      width: 40px; height: 40px;
+      background: var(--canvas);
+      border: 1px solid rgba(20,20,19,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 0.69rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--slate);
+    }
+
+    .contact-item-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 5rem 3rem 3rem;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-headline {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 3rem;
+      max-width: 500px;
+    }
+
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 2rem 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-link {
+      font-size: 0.8rem;
+      font-weight: 450;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .footer-link:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ───────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav {
+        left: 1rem; right: 1rem;
+        transform: none;
+        padding: 10px 16px;
+        gap: 1.25rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      nav::-webkit-scrollbar { display: none; }
+      .nav-links { gap: 1.25rem; }
+      .nav-links a { font-size: 0.78rem; }
+      .nav-cta { font-size: 0.78rem; padding: 5px 14px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .code-stadium { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .training-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Ivan S.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Technical Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Work Experience</a></li>
+      <li><a href="#education">Education &amp; Training</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow fade-up">
+        <span class="eyebrow-dot"></span>
+        Talisay City, Cebu, Philippines
+      </div>
+      <h1 class="fade-up">Ivan Uriel<br />Sejismundo</h1>
+      <p class="hero-sub fade-up">Full Stack Developer &amp; Project Manager — building scalable, AI-powered applications with React, ASP.NET Core, and modern cloud tools.</p>
+      <div class="hero-btns fade-up">
+        <a href="#projects" class="btn-ink">View Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+        <a href="https://github.com/NaviLeiru" target="_blank" rel="noopener" class="btn-outline">GitHub ↗</a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">BS IT</div>
+          <div class="stat-label">Degree</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-lifted">
+    <div class="container">
+      <div class="ghost-text fade-up">ABOUT</div>
+      <div class="ghost-content">
+        <div class="about-grid">
+          <div class="fade-up">
+            <div class="eyebrow" style="margin-bottom:1rem">
+              <span class="eyebrow-dot"></span>
+              About Me
+            </div>
+            <h2 class="section-title" style="margin-bottom:1.5rem">Motivated dev,<br />problem-solver</h2>
+            <p class="about-p">Full Stack Developer Trainee and emerging Project Manager with hands-on experience in ASP.NET Core, ReactJS, and MSSQL — combined with practical exposure leading an AI-driven project integrating RAG, LangChain, and modern cloud-based tools.</p>
+            <p class="about-p">Graduate of the University of San Jose – Recoletos with a BS in Information Technology. Adept at applying SOLID principles and Agile practices across both development and project coordination tasks.</p>
+            <p class="about-p">Recognized for strong communication, cultural awareness, and a collaborative mindset — driven by continuous learning and delivering impactful solutions.</p>
+            <div class="fact-strip">
+              <div class="fact">
+                <div class="fact-label">Degree</div>
+                <div class="fact-value">BS Information Technology</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Location</div>
+                <div class="fact-value">Cebu, Philippines</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Current Role</div>
+                <div class="fact-value">Jr. Software Engineer</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Methodology</div>
+                <div class="fact-value">Agile / Scrum</div>
+              </div>
+            </div>
+          </div>
+          <div class="code-stadium fade-up">
+            <div class="code-block">
+              <div><span class="cd">// ivan.config.ts</span></div>
+              <div><span class="ck">const</span> ivan = {</div>
+              <div>&nbsp; <span class="cv">name</span>: <span class="cs">"Ivan Uriel Sejismundo"</span>,</div>
+              <div>&nbsp; <span class="cv">role</span>: <span class="cs">"Full Stack Developer"</span>,</div>
+              <div>&nbsp; <span class="cv">location</span>: <span class="cs">"Cebu, PH"</span>,</div>
+              <div>&nbsp; <span class="cv">stack</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"React"</span>, <span class="cs">"TypeScript"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"ASP.NET Core"</span>, <span class="cs">"MSSQL"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"Docker"</span>, <span class="cs">"Azure DevOps"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"LangChain"</span>, <span class="cs">"RAG"</span></div>
+              <div>&nbsp; ],</div>
+              <div>&nbsp; <span class="cv">loves</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"Clean Code"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"AI Systems"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp; <span class="cs">"UI/UX Design"</span></div>
+              <div>&nbsp; ],</div>
+              <div>&nbsp; <span class="cv">openToWork</span>: <span class="ck">true</span></div>
+              <div>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="ghost-text fade-up">SKILLS</div>
+      <div class="ghost-content">
+        <div class="section-header fade-up">
+          <div class="eyebrow"><span class="eyebrow-dot"></span>Technical Stack</div>
+          <h2 class="section-title">Tools &amp; Technologies</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card fade-up">
+            <div class="skill-card-title">Frontend</div>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Angular</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Bootstrap</span>
+              <span class="tag">Vite</span>
+            </div>
+          </div>
+          <div class="skill-card fade-up">
+            <div class="skill-card-title">Backend</div>
+            <div class="tags">
+              <span class="tag">C# ASP.NET Core</span>
+              <span class="tag">REST API</span>
+              <span class="tag">Entity Framework</span>
+              <span class="tag">Python</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">RAG Architecture</span>
+            </div>
+          </div>
+          <div class="skill-card fade-up">
+            <div class="skill-card-title">Database</div>
+            <div class="tags">
+              <span class="tag">MSSQL Server</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">PGVector</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">EF Core</span>
+            </div>
+          </div>
+          <div class="skill-card fade-up">
+            <div class="skill-card-title">DevOps &amp; Tools</div>
+            <div class="tags">
+              <span class="tag">Docker</span>
+              <span class="tag">Azure DevOps</span>
+              <span class="tag">Azure VM</span>
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+          <div class="skill-card fade-up">
+            <div class="skill-card-title">Data &amp; Analytics</div>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Microsoft Excel</span>
+              <span class="tag">Pivot Tables</span>
+              <span class="tag">KPI Dashboards</span>
+              <span class="tag">Data Visualization</span>
+            </div>
+          </div>
+          <div class="skill-card fade-up">
+            <div class="skill-card-title">Design &amp; Management</div>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Canva</span>
+              <span class="tag">Notion</span>
+              <span class="tag">Miro</span>
+              <span class="tag">UI/UX Design</span>
+              <span class="tag">Agile / Scrum</span>
+              <span class="tag">Project Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section section-lifted">
+    <div class="container">
+      <div class="ghost-text fade-up">PROJECTS</div>
+      <div class="ghost-content">
+        <div class="section-header fade-up">
+          <div class="eyebrow"><span class="eyebrow-dot"></span>Portfolio</div>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+
+          <div class="project-card fade-up">
+            <div class="project-header">
+              <div class="project-name">Paxie — RAG-Powered AI Chatbot</div>
+              <span class="project-badge badge-work">Work</span>
+            </div>
+            <p class="project-desc">Intelligent chatbot for N-PAX website providing instant, context-aware responses. Features Agentic RAG architecture with LangChain, vector-based retrieval via PGVector, and scalable cloud deployment on Azure VMs.</p>
+            <div class="tags">
+              <span class="tag">ReactJS</span>
+              <span class="tag">TailwindCSS</span>
+              <span class="tag">C# .NET</span>
+              <span class="tag">Python</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">PGVector</span>
+              <span class="tag">MS SQL</span>
+              <span class="tag">Azure</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/zsch4/Agentic-Rag-system" target="_blank" rel="noopener" class="project-link">Backend ↗</a>
+              <a href="https://github.com/zsch4/Paxie-Frontend" target="_blank" rel="noopener" class="project-link">Frontend ↗</a>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-header">
+              <div class="project-name">G-Guide — Church Services Platform</div>
+              <span class="project-badge badge-capstone">Capstone</span>
+            </div>
+            <p class="project-desc">Web-based platform making Catholic Church services in Cebu more accessible — church mapping, service booking, appointment tracking, Visita Iglesia route planning, and volunteer coordination via geolocation.</p>
+            <div class="tags">
+              <span class="tag">Full Stack</span>
+              <span class="tag">Geolocation</span>
+              <span class="tag">Web Mapping</span>
+              <span class="tag">Booking System</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/AlixMarian/g-guide.git" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+              <a href="https://www.figma.com/design/iuhTZRlxK3qWevPBwhimTm/G--Guide?node-id=0-1&t=I9hHTGqnV3niYXnX-1" target="_blank" rel="noopener" class="project-link">Figma ↗</a>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-header">
+              <div class="project-name">Momentum — Fitness Tracker</div>
+              <span class="project-badge badge-personal">Personal</span>
+            </div>
+            <p class="project-desc">Full-stack fitness tracking app for workout progress, BMI calculation, and browsing exercises with images and instructions. Containerized with Docker Compose for consistent multi-service deployment.</p>
+            <div class="tags">
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">React (Vite)</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">Docker Compose</span>
+              <span class="tag">Tailwind CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/IvanNPAX/Momentum-react.git" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-header">
+              <div class="project-name">Fintech — Personal Finance Assistant</div>
+              <span class="project-badge badge-capstone">Capstone</span>
+            </div>
+            <p class="project-desc">Personal financial assistant with balance and transaction tracking, savings goal setting, and real-time financial data visualization to empower informed money decisions.</p>
+            <div class="tags">
+              <span class="tag">Full Stack</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Real-time</span>
+              <span class="tag">Financial Analytics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/NajeBabs/fintech.git" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+              <a href="https://www.figma.com/design/c5SnsRRLSYiKqAKJXqAhTX/Finebank---Financial-Management-Dashboard-UI-Kits--Community-?node-id=443-2616&t=5Q4nQeZE0f6ukjZo-1" target="_blank" rel="noopener" class="project-link">Figma ↗</a>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-header">
+              <div class="project-name">Task Application — Full Stack</div>
+              <span class="project-badge badge-personal">Personal</span>
+            </div>
+            <p class="project-desc">Task management system with CRUD operations, authentication, and Docker containerization for consistent deployment. Responsive UI with Tailwind CSS, full REST API integration between React and ASP.NET Core.</p>
+            <div class="tags">
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">ReactJS</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Auth</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="ghost-text fade-up">WORK</div>
+      <div class="ghost-content">
+        <div class="section-header fade-up">
+          <div class="eyebrow"><span class="eyebrow-dot"></span>Work History</div>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="timeline">
+
+          <div class="timeline-item fade-up">
+            <div class="timeline-dot">●</div>
+            <div class="timeline-content">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-title">Junior Software Engineer</div>
+                  <div class="exp-company">N-PAX Global IT Solutions and Service Provider</div>
+                </div>
+                <span class="exp-date">Jan — May 2026</span>
+              </div>
+              <div class="tags" style="margin-bottom:0.9rem">
+                <span class="tag">AI-Augmented Dev</span>
+                <span class="tag">Full Stack</span>
+                <span class="tag">Code Review</span>
+                <span class="tag">Architecture</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Practiced AI-augmented development workflows — integrating AI tools into code generation, debugging, test writing, and documentation while retaining full developer judgment over architecture and outcomes</li>
+                <li>Used AI assistance for code review and refactoring, identifying code smells and proposing cleaner implementations focused on SOLID principles and maintainability</li>
+                <li>Leveraged AI for context switching and onboarding — quickly understanding unfamiliar codebases, summarizing pull requests, and ramping up on new frameworks faster</li>
+                <li>Applied AI tools to support architecture and planning decisions, evaluating system design tradeoffs and generating data model proposals while exercising final technical judgment</li>
+                <li>Demonstrated the core AI-augmented mindset: directing AI to handle repetitive tasks while shifting personal focus toward higher-level judgment, review, and architectural outcomes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up">
+            <div class="timeline-dot">●</div>
+            <div class="timeline-content">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-title">Junior Software Engineer Trainee</div>
+                  <div class="exp-company">N-PAX Global IT Solutions and Service Provider</div>
+                </div>
+                <span class="exp-date">Aug 2025 — Jan 2026</span>
+              </div>
+              <div class="tags" style="margin-bottom:0.9rem">
+                <span class="tag">Frontend Dev</span>
+                <span class="tag">Full Stack Track</span>
+                <span class="tag">Project Management</span>
+                <span class="tag">Data Analysis</span>
+                <span class="tag">Angular</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Led planning and development of AI-driven chatbot Paxie — coordinated cross-functional teams, managed timelines, risks, and deployment</li>
+                <li>Collaborated within Agile teams on debugging, testing, and continuous improvement of application performance</li>
+                <li>Applied Power BI and Excel for data analysis, dashboard design, and KPI reporting</li>
+                <li>Completed intensive full-stack training: C#, ASP.NET Core, React, MSSQL, EF Core, Docker, Azure DevOps</li>
+                <li>Coordinated frontend, backend, and QA teams for seamless integration across all tracks</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up">
+            <div class="timeline-dot">●</div>
+            <div class="timeline-content">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-title">Intern — Junior Frontend Developer &amp; Technical Documentation</div>
+                  <div class="exp-company">Xpertis IT Solutions</div>
+                </div>
+                <span class="exp-date">Jan — May 2025</span>
+              </div>
+              <div class="tags" style="margin-bottom:0.9rem">
+                <span class="tag">React</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">Figma</span>
+                <span class="tag">UI Components</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Designed and implemented UI components — modals, forms, structured layout sections</li>
+                <li>Developed interactive features: filtering, sorting, and dynamic input handling</li>
+                <li>Resolved UI bugs and improved design consistency across pages</li>
+                <li>Assigned to research and development of the OrderSnap application</li>
+                <li>Ensured smooth frontend-backend integration within Agile environment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up">
+            <div class="timeline-dot">●</div>
+            <div class="timeline-content">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-title">Secretary's Assistant</div>
+                  <div class="exp-company">ICTO, Cebu City</div>
+                </div>
+                <span class="exp-date">2022 — 2023</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Responded to inquiries and greeted visitors with professional assistance</li>
+                <li>Organized logistics and materials for meetings, took detailed notes for stakeholder dissemination</li>
+                <li>Performed industry research and data collection</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section section-lifted">
+    <div class="container">
+      <div class="ghost-text fade-up">EDU</div>
+      <div class="ghost-content">
+        <div class="section-header fade-up">
+          <div class="eyebrow"><span class="eyebrow-dot"></span>Academic Background</div>
+          <h2 class="section-title">Education &amp; Training</h2>
+        </div>
+        <div class="edu-grid fade-up">
+          <div class="edu-card">
+            <div class="edu-school">University of San Jose – Recoletos</div>
+            <div class="edu-degree">Bachelor of Science in Information Technology</div>
+            <div class="edu-year">Graduated 2025</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-school">Cebu Institute of Technology</div>
+            <div class="edu-degree">Science, Technology, Engineering &amp; Mathematics (STEM)</div>
+            <div class="edu-year">2019 — 2021</div>
+          </div>
+        </div>
+        <div class="eyebrow fade-up" style="margin-bottom:1.25rem"><span class="eyebrow-dot"></span>Certifications &amp; Training</div>
+        <div class="training-grid fade-up">
+          <div class="training-card">
+            <div class="training-title">Full Stack Developer Track</div>
+            <div class="training-meta">N-PAX Fresh Graduate Training · Aug–Dec 2025</div>
+            <div class="tags">
+              <span class="tag">C# ASP.NET Core</span>
+              <span class="tag">React</span>
+              <span class="tag">MSSQL</span>
+              <span class="tag">EF Core</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Azure DevOps</span>
+              <span class="tag">Agile</span>
+            </div>
+          </div>
+          <div class="training-card">
+            <div class="training-title">Project Management</div>
+            <div class="training-meta">N-PAX Fresh Graduate Training · Aug–Dec 2025</div>
+            <div class="tags">
+              <span class="tag">AI Chatbot PM</span>
+              <span class="tag">Risk Management</span>
+              <span class="tag">Stakeholder Comms</span>
+              <span class="tag">Cross-team Lead</span>
+            </div>
+          </div>
+          <div class="training-card">
+            <div class="training-title">Data Analysis &amp; BI / Angular</div>
+            <div class="training-meta">N-PAX Fresh Graduate Training · Aug–Dec 2025</div>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Microsoft Excel</span>
+              <span class="tag">Angular</span>
+              <span class="tag">KPI Dashboards</span>
+              <span class="tag">Data Cleaning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="fade-up">
+          <div class="eyebrow" style="margin-bottom:1rem"><span class="eyebrow-dot"></span>Let's Connect</div>
+          <h2 class="contact-headline">Always here<br />when you need.</h2>
+          <p class="contact-p">Open to new opportunities, collaborations, and interesting projects. Whether you have a question or just want to say hi — reach out.</p>
+          <div class="social-links">
+            <a href="https://github.com/NaviLeiru" target="_blank" rel="noopener" class="social-link">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/sejismundoivan-uriel-21650523a/" target="_blank" rel="noopener" class="social-link">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="contact-items fade-up">
+          <a href="mailto:sejismundouriel24@gmail.com" class="contact-item">
+            <div class="contact-item-icon">✉</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">sejismundouriel24@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:09672045614" class="contact-item">
+            <div class="contact-item-icon">☎</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">0967-204-5614</div>
+            </div>
+          </a>
+          <div class="contact-item" style="cursor:default">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-value">Poblacion, Talisay City, Cebu, Philippines</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <h2 class="footer-headline">We're always here when you need us.</h2>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Ivan Uriel Sejismundo</p>
+        <div class="footer-links">
+          <a href="mailto:sejismundouriel24@gmail.com" class="footer-link">Email ↗</a>
+          <a href="https://github.com/NaviLeiru" target="_blank" rel="noopener" class="footer-link">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/sejismundoivan-uriel-21650523a/" target="_blank" rel="noopener" class="footer-link">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Explicit anchor scroll — works in iframes and all browsers
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const id = this.getAttribute('href').slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        const navH = document.querySelector('nav').offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
