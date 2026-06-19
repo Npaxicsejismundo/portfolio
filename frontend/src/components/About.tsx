@@ -1,3 +1,5 @@
+import { Icon } from '@iconify/react';
+
 export default function About() {
   return (
     <section className="section-lifted" id="about">
@@ -34,28 +36,28 @@ export default function About() {
 
           <div className="about-cards">
             <div className="about-card">
-              <div className="about-card-icon">⚡</div>
+              <div className="about-card-icon"><Icon icon="lucide:zap" /></div>
               <div className="about-card-title">Full Stack</div>
               <div className="about-card-desc">
                 React + TypeScript frontends paired with C# ASP.NET Core APIs and SQL databases.
               </div>
             </div>
             <div className="about-card">
-              <div className="about-card-icon">🤖</div>
+              <div className="about-card-icon"><Icon icon="lucide:bot" /></div>
               <div className="about-card-title">AI Systems</div>
               <div className="about-card-desc">
                 RAG architecture, LangChain pipelines, and PGVector retrieval for intelligent apps.
               </div>
             </div>
             <div className="about-card">
-              <div className="about-card-icon">☁️</div>
+              <div className="about-card-icon"><Icon icon="lucide:cloud" /></div>
               <div className="about-card-title">Cloud & DevOps</div>
               <div className="about-card-desc">
                 Docker, Azure DevOps, Azure VMs — containerized, deployed, and maintained.
               </div>
             </div>
             <div className="about-card">
-              <div className="about-card-icon">📊</div>
+              <div className="about-card-icon"><Icon icon="lucide:bar-chart-3" /></div>
               <div className="about-card-title">Data & BI</div>
               <div className="about-card-desc">
                 Power BI dashboards, KPI reporting, and data visualization for actionable insights.

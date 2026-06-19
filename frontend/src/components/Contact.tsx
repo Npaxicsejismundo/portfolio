@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import { personal } from '../data/portfolio';
 
 export default function Contact() {
@@ -34,7 +35,7 @@ export default function Contact() {
           {/* Right — contact cards */}
           <div className="contact-cards">
             <a className="contact-card" href={`mailto:${personal.email}`}>
-              <div className="contact-card-icon">✉️</div>
+              <div className="contact-card-icon"><Icon icon="lucide:mail" /></div>
               <div className="contact-card-body">
                 <div className="contact-item-label">Email</div>
                 <div className="contact-item-value">{personal.email}</div>
@@ -43,7 +44,7 @@ export default function Contact() {
             </a>
 
             <a className="contact-card" href={`tel:${personal.phone}`}>
-              <div className="contact-card-icon">📞</div>
+              <div className="contact-card-icon"><Icon icon="lucide:phone" /></div>
               <div className="contact-card-body">
                 <div className="contact-item-label">Phone</div>
                 <div className="contact-item-value">{personal.phone}</div>
@@ -52,7 +53,7 @@ export default function Contact() {
             </a>
 
             <div className="contact-card" style={{ cursor: 'default' }}>
-              <div className="contact-card-icon">📍</div>
+              <div className="contact-card-icon"><Icon icon="lucide:map-pin" /></div>
               <div className="contact-card-body">
                 <div className="contact-item-label">Location</div>
                 <div className="contact-item-value">{personal.location}</div>

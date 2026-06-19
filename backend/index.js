@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3001;
+const PORT = 3002;
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: 'http://localhost:5174' }));
 app.use(express.json());
 
 const projects = [
@@ -16,6 +16,7 @@ const projects = [
       'Intelligent chatbot for N-PAX website providing instant, context-aware responses. Features Agentic RAG architecture with LangChain, vector-based retrieval via PGVector, and scalable cloud deployment on Azure VMs.',
     tech: ['ReactJS', 'TailwindCSS', 'C# .NET', 'Python', 'LangChain', 'PGVector', 'MS SQL', 'Azure'],
     links: [
+      { label: 'Live', url: 'https://ai.n-pax.com/login' },
       { label: 'Backend', url: 'https://github.com/zsch4/Agentic-Rag-system' },
       { label: 'Frontend', url: 'https://github.com/zsch4/Paxie-Frontend' },
     ],
@@ -67,6 +68,15 @@ const projects = [
       'Task management system with CRUD operations, authentication, and Docker containerization for consistent deployment. Responsive UI with Tailwind CSS, full REST API integration between React and ASP.NET Core.',
     tech: ['ASP.NET Core', 'ReactJS', 'Docker', 'Tailwind CSS', 'Auth'],
     links: [],
+  },
+  {
+    id: 6,
+    title: 'TestForge — QA Test Management Platform',
+    badge: 'Personal',
+    description:
+      'Multi-tenant QA platform for organizing test suites, executing test runs, and tracking bug reports with full audit history. Includes Claude-powered AI test case generation, Jira sync, webhook delivery, and S3-backed attachments behind JWT/RBAC-secured Fastify APIs.',
+    tech: ['Next.js', 'React', 'Fastify', 'PostgreSQL', 'Prisma', 'Claude AI', 'AWS S3', 'Docker'],
+    links: [{ label: 'GitHub', url: 'https://github.com/Npaxicsejismundo/testforge' }],
   },
 ];
 

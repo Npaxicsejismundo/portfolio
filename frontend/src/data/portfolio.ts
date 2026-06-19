@@ -61,6 +61,7 @@ export const projects: Project[] = [
       'Intelligent chatbot for N-PAX website providing instant, context-aware responses. Features Agentic RAG architecture with LangChain, vector-based retrieval via PGVector, and scalable cloud deployment on Azure VMs.',
     tech: ['ReactJS', 'TailwindCSS', 'C# .NET', 'Python', 'LangChain', 'PGVector', 'MS SQL', 'Azure'],
     links: [
+      { label: 'Live ↗', url: 'https://ai.n-pax.com/login' },
       { label: 'Backend ↗', url: 'https://github.com/zsch4/Agentic-Rag-system' },
       { label: 'Frontend ↗', url: 'https://github.com/zsch4/Paxie-Frontend' },
     ],
@@ -113,6 +114,24 @@ export const projects: Project[] = [
     tech: ['ASP.NET Core', 'ReactJS', 'Docker', 'Tailwind CSS', 'Auth'],
     links: [],
   },
+  {
+    id: 6,
+    title: 'TestForge — QA Test Management Platform',
+    badge: 'Personal',
+    description:
+      'Multi-tenant QA platform for organizing test suites, executing test runs, and tracking bug reports with full audit history. Includes Claude-powered AI test case generation, Jira sync, webhook delivery, and S3-backed attachments behind JWT/RBAC-secured Fastify APIs.',
+    tech: ['Next.js', 'React', 'Fastify', 'PostgreSQL', 'Prisma', 'Claude AI', 'AWS S3', 'Docker'],
+    links: [{ label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/testforge' }],
+  },
+  {
+    id: 7,
+    title: 'DinkDrip — Pickleball Paddle Customizer',
+    badge: 'Personal',
+    description:
+      '3D pickleball paddle customizer — choose from paddle shapes, dial in edge tape and grip wrap colors, and preview your full build in real time before ordering. Built with React Three Fiber for live 3D rendering and Zustand for reactive state across the configurator.',
+    tech: ['Expo', 'React Native', 'React Three Fiber', 'Three.js', 'Zustand', 'TypeScript'],
+    links: [{ label: 'Live ↗', url: 'https://dinkdrip.vercel.app' }],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
@@ -147,7 +166,7 @@ export const experiences: Experience[] = [
     id: 1,
     role: 'Junior Software Engineer',
     company: 'N-PAX Global IT Solutions',
-    period: 'Jan — May 2026',
+    period: 'Jan 2026 — Present',
     tags: ['AI-Augmented Dev', 'Full Stack', 'Code Review', 'Architecture'],
     bullets: [
       'Practiced AI-augmented development workflows — integrating AI tools into code generation, debugging, test writing, and documentation while retaining full developer judgment over architecture and outcomes.',
