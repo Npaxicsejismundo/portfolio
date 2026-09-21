@@ -132,6 +132,30 @@ export const projects: Project[] = [
     tech: ['Expo', 'React Native', 'React Three Fiber', 'Three.js', 'Zustand', 'TypeScript'],
     links: [{ label: 'Live ↗', url: 'https://dinkdrip.vercel.app' }],
   },
+  {
+    id: 8,
+    title: 'Tamp Cafe & Co. — Website Redesign',
+    badge: 'Personal',
+    description:
+      'Website redesign concept for Tamp Cafe & Co. in Cebu City. Multi-page site covering the Tamp and Black Sheep menus, custom cakes, event hall buffets, and branch contact details, all driven by structured data modules for easy content updates.',
+    tech: ['React', 'Vite', 'React Router', 'JavaScript', 'CSS'],
+    links: [
+      { label: 'Live ↗', url: 'https://tamp-cafe-co.vercel.app/' },
+      { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/TampCafe-Co' },
+    ],
+  },
+  {
+    id: 9,
+    title: 'Balai — Brunch Cafe Website',
+    badge: 'Personal',
+    description:
+      'Website concept for Balai, a Cebuano-inspired brunch house in Banilad, Mandaue. Lightweight single-page site with home, menu, and reservation views, warm editorial typography, and optimized WebP imagery.',
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+    links: [
+      { label: 'Live ↗', url: 'https://balai-cafe.vercel.app/' },
+      { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/BalaiCafe' },
+    ],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
