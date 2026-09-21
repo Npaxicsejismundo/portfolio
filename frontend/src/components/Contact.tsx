@@ -1,66 +1,70 @@
+import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { personal } from '../data/portfolio';
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personal.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${personal.email}`;
+    }
+  };
+
   return (
     <section className="section" id="contact">
-      <span className="ghost-text" aria-hidden="true">CONTACT</span>
+      <div className="container">
+        <div className="contact-panel reveal">
+          <div className="contact-glow" aria-hidden="true" />
 
-      <div className="section-inner">
-        <div className="contact-layout">
-
-          {/* Left — headline + social */}
-          <div className="contact-left">
-            <div className="eyebrow">
-              <span className="eyebrow-dot">●</span>
-              Let's Connect
-            </div>
-            <h2 className="contact-headline">
-              Always here<br />when you need.
-            </h2>
-            <p className="contact-desc">
-              Open to full-time roles, freelance projects, and interesting collaborations.
-              Reach out via email or connect on social.
-            </p>
-            <div className="social-links">
-              <a className="social-link" href={personal.github} target="_blank" rel="noopener noreferrer">
-                GitHub ↗
-              </a>
-              <a className="social-link" href={personal.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn ↗
-              </a>
-            </div>
+          <div className="eyebrow contact-eyebrow">
+            <span className="eyebrow-index">06</span>
+            <span className="eyebrow-line" aria-hidden="true" />
+            Contact
           </div>
 
-          {/* Right — contact cards */}
-          <div className="contact-cards">
-            <a className="contact-card" href={`mailto:${personal.email}`}>
-              <div className="contact-card-icon"><Icon icon="lucide:mail" /></div>
-              <div className="contact-card-body">
-                <div className="contact-item-label">Email</div>
-                <div className="contact-item-value">{personal.email}</div>
-              </div>
-              <span className="contact-card-arrow">↗</span>
-            </a>
+          <h2 className="contact-title">
+            Let's build something
+            <br />
+            <em className="serif">great</em> together.
+          </h2>
 
-            <a className="contact-card" href={`tel:${personal.phone}`}>
-              <div className="contact-card-icon"><Icon icon="lucide:phone" /></div>
-              <div className="contact-card-body">
-                <div className="contact-item-label">Phone</div>
-                <div className="contact-item-value">{personal.phone}</div>
-              </div>
-              <span className="contact-card-arrow">↗</span>
-            </a>
+          <p className="contact-desc">
+            Open to full-time roles, freelance projects, and interesting collaborations.
+          </p>
 
-            <div className="contact-card" style={{ cursor: 'default' }}>
-              <div className="contact-card-icon"><Icon icon="lucide:map-pin" /></div>
-              <div className="contact-card-body">
-                <div className="contact-item-label">Location</div>
-                <div className="contact-item-value">{personal.location}</div>
-              </div>
-            </div>
+          <div className="contact-email">
+            <a href={`mailto:${personal.email}`} className="contact-email-link">
+              {personal.email}
+            </a>
+            <button className="contact-copy" onClick={copyEmail} aria-label="Copy email address">
+              <Icon icon={copied ? 'lucide:check' : 'lucide:copy'} />
+              {copied ? 'Copied' : 'Copy'}
+            </button>
           </div>
 
+          <div className="contact-meta">
+            <a className="contact-chip" href={`tel:${personal.phone}`}>
+              <Icon icon="lucide:phone" />
+              {personal.phone}
+            </a>
+            <span className="contact-chip">
+              <Icon icon="lucide:map-pin" />
+              {personal.location}
+            </span>
+            <a className="contact-chip" href={personal.github} target="_blank" rel="noopener noreferrer">
+              <Icon icon="lucide:github" />
+              GitHub
+            </a>
+            <a className="contact-chip" href={personal.linkedin} target="_blank" rel="noopener noreferrer">
+              <Icon icon="lucide:linkedin" />
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </section>

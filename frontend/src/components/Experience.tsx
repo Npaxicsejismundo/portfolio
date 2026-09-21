@@ -1,57 +1,54 @@
 import { experiences } from '../data/portfolio';
+import SectionHeader from './SectionHeader';
 
 export default function Experience() {
   return (
-    <section className="section" id="experience">
-      <span className="ghost-text" style={{ top: '-10px', left: '-20px' }} aria-hidden="true">
-        EXP
-      </span>
+    <section className="section section-alt" id="experience">
+      <div className="container">
+        <SectionHeader
+          index="04"
+          eyebrow="Experience"
+          title="Where I've worked"
+          sub="From intern to engineer — a progression built on shipping real products."
+        />
 
-      <div className="section-inner">
-        <div className="eyebrow">
-          <span className="eyebrow-dot">●</span>
-          Work Experience
-        </div>
-        <h2 className="section-title">Where I've Worked</h2>
-        <p className="section-sub">
-          From intern to engineer — a progression built on shipping real products.
-        </p>
-
-        <div className="timeline">
-          {experiences.map((exp) => (
-            <div key={exp.id} className="timeline-item">
-              <div className="timeline-dot">
-                <div className="timeline-dot-inner" />
-              </div>
-
-              <div className="timeline-card">
-                <div className="timeline-meta">
-                  <span className="timeline-role">{exp.role}</span>
-                  <span className="timeline-company">{exp.company}</span>
-                  <span className="timeline-period">{exp.period}</span>
+        <ol className="exp-list">
+          {experiences.map((exp) => {
+            const current = exp.period.includes('Present');
+            return (
+              <li key={exp.id} className="exp-item reveal">
+                <div className="exp-side">
+                  <span className="exp-period">{exp.period}</span>
+                  <span className="exp-company">{exp.company}</span>
+                  {current && (
+                    <span className="exp-current">
+                      <span className="status-dot" />
+                      Current
+                    </span>
+                  )}
                 </div>
 
-                {exp.tags.length > 0 && (
-                  <div className="tags timeline-tags">
-                    {exp.tags.map((tag) => (
-                      <span key={tag} className="tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <div className="timeline-bullets">
-                  {exp.bullets.map((bullet, i) => (
-                    <div key={i} className="timeline-bullet">
-                      {bullet}
+                <div className="exp-main">
+                  <h3 className="exp-role">{exp.role}</h3>
+                  {exp.tags.length > 0 && (
+                    <div className="tags">
+                      {exp.tags.map((tag) => (
+                        <span key={tag} className="tag">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  ))}
+                  )}
+                  <ul className="exp-bullets">
+                    {exp.bullets.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

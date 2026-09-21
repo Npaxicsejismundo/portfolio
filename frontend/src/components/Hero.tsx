@@ -1,68 +1,64 @@
-import { personal } from '../data/portfolio';
+import { Icon } from '@iconify/react';
+import { personal, projects } from '../data/portfolio';
+import { scrollToId } from '../lib/scroll';
 
-function scrollTo(id: string, offset = 80) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: 'smooth' });
-}
+const STATS = [
+  { num: String(projects.length), label: 'Projects shipped' },
+  { num: '3', label: 'Years experience' },
+  { num: '15+', label: 'Technologies' },
+  { num: 'BS IT', label: 'USJ-R, 2025' },
+];
 
 export default function Hero() {
   return (
     <section className="hero" id="hero">
-      <span className="ghost-text hero-ghost" aria-hidden="true">PORTFOLIO</span>
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-glow" aria-hidden="true" />
 
-      <div className="hero-inner">
-        <div className="eyebrow fade-up">
-          <span className="eyebrow-dot">●</span>
-          {personal.location}
+      <div className="container hero-inner">
+        <div className="status-pill fade-up">
+          <span className="status-dot" />
+          Open to opportunities · Cebu, PH
         </div>
 
-        <h1 className="hero-name fade-up fade-up-d1">
-          <span>Ivan Uriel</span>
-          <span>Sejismundo</span>
-        </h1>
-
-        <p className="hero-sub fade-up fade-up-d2">
-          Full Stack Developer specializing in React, ASP.NET Core, and AI-augmented systems.
-          Building scalable web apps and intelligent solutions from Cebu, Philippines.
+        <p className="hero-kicker fade-up d1">
+          {personal.name} — Full Stack Developer
         </p>
 
-        <div className="hero-btns fade-up fade-up-d3">
-          <button className="btn-ink" onClick={() => scrollTo('projects')}>
-            View Projects
+        <h1 className="hero-title fade-up d2">
+          I build clean web apps
+          <br />
+          &amp; <em className="serif">AI-powered</em> products.
+        </h1>
+
+        <p className="hero-sub fade-up d3">
+          React, ASP.NET Core and RAG systems — from pixel-level UI to cloud deployment.
+          Currently engineering at N-PAX Global IT Solutions.
+        </p>
+
+        <div className="hero-btns fade-up d4">
+          <button className="btn btn-primary" onClick={() => scrollToId('projects')}>
+            View my work
+            <Icon icon="lucide:arrow-down" />
           </button>
-          <button className="btn-outline" onClick={() => scrollTo('contact')}>
-            Get in Touch
-          </button>
-          <a
-            className="btn-outline"
-            href={personal.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub ↗
+          <a className="btn btn-ghost" href={`mailto:${personal.email}`}>
+            <Icon icon="lucide:mail" />
+            Email me
+          </a>
+          <a className="btn btn-ghost" href={personal.github} target="_blank" rel="noopener noreferrer">
+            <Icon icon="lucide:github" />
+            GitHub
           </a>
         </div>
 
-        <div className="hero-stats fade-up fade-up-d4">
-          <div className="stat-item">
-            <div className="stat-num">5+</div>
-            <div className="stat-label">Projects</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">3</div>
-            <div className="stat-label">Years Exp.</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">15+</div>
-            <div className="stat-label">Technologies</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">BS IT</div>
-            <div className="stat-label">Degree</div>
-          </div>
-        </div>
+        <dl className="hero-stats fade-up d5">
+          {STATS.map((s) => (
+            <div key={s.label} className="stat">
+              <dt className="stat-label">{s.label}</dt>
+              <dd className="stat-num">{s.num}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
