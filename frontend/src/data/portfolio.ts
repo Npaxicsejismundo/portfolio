@@ -156,6 +156,18 @@ export const projects: Project[] = [
       { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/BalaiCafe' },
     ],
   },
+  {
+    id: 10,
+    title: 'Acacia Steakhouse — Restaurant & Butchery Website',
+    badge: 'Personal',
+    description:
+      'Multi-page website for Acacia Steakhouse in Cebu, built out from a single-screen UI mockup. Features table reservations with generated time slots and a live booking summary, a butchery shop with a persistent cart and two-step checkout, a searchable menu, and private dining enquiries. Framework-free and WCAG AA accessible.',
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'localStorage', 'Accessibility', 'JSON-LD SEO'],
+    links: [
+      { label: 'Live ↗', url: 'https://acacia-steakhouse.vercel.app/' },
+      { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/Acacia-Steakhouse' },
+    ],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
