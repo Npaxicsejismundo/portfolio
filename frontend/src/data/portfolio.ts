@@ -168,6 +168,18 @@ export const projects: Project[] = [
       { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/Acacia-Steakhouse' },
     ],
   },
+  {
+    id: 11,
+    title: 'IDLE Sets — Interior Design Board Exam Reviewer',
+    badge: 'Work',
+    description:
+      'Client website for IDLE Sets, a reviewer for the Licensure Examination for Interior Designers. Includes a marketing landing page, a membership registration flow with InstaPay proof-of-payment upload to private storage, a password-protected admin dashboard for approving members and issuing access codes, and a members area where reviewers answer sets in-site with saved progress, results, and retakes.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Vercel Blob', 'Resend'],
+    links: [
+      { label: 'Live ↗', url: 'https://idle-sets.vercel.app' },
+      { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/IDLE-SETS' },
+    ],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
