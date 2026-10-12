@@ -180,6 +180,18 @@ export const projects: Project[] = [
       { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/IDLE-SETS' },
     ],
   },
+  {
+    id: 12,
+    title: 'The Sabrina Show — Sabrina Carpenter Fan Site',
+    badge: 'Personal',
+    description:
+      'Unofficial Sabrina Carpenter fan site staged as a variety show, covering every era, the hits, the trophies, and the road to headlining Coachella. A pinned horizontal eras rail re-themes the whole page with each album\'s sampled colors and matched typography, alongside Spotify and YouTube embeds, animated award counters, prerendered per-era pages, and generated share images.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Lenis'],
+    links: [
+      { label: 'Live ↗', url: 'https://sabrina-carpenter-fan-website.vercel.app' },
+      { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/SabrinaCarpenter-FanWebsite' },
+    ],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
