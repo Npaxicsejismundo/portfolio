@@ -192,6 +192,18 @@ export const projects: Project[] = [
       { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/SabrinaCarpenter-FanWebsite' },
     ],
   },
+  {
+    id: 13,
+    title: 'Liwanag — Ben&Ben Fan Site',
+    badge: 'Personal',
+    description:
+      'Unofficial tribute to Filipino folk-pop band Ben&Ben, built around light as a motif. Traces their story from The Benjamins to a nine-piece band, with a profile for each member in their own signature color, a discography where each era recolors the page in its cover\'s palette, Spotify and YouTube embeds, and a live stages timeline. Every fact is sourced, and each page is prerendered to static HTML before hydrating.',
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis'],
+    links: [
+      { label: 'Live ↗', url: 'https://ben-and-ben-fanpage.vercel.app' },
+      { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/Ben-and-ben-Fanpage' },
+    ],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
