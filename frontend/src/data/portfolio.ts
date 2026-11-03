@@ -185,7 +185,7 @@ export const projects: Project[] = [
     title: 'The Sabrina Show — Sabrina Carpenter Fan Site',
     badge: 'Personal',
     description:
-      'Unofficial Sabrina Carpenter fan site staged as a variety show, covering every era, the hits, the trophies, and the road to headlining Coachella. A pinned horizontal eras rail re-themes the whole page with each album\'s sampled colors and matched typography, alongside Spotify and YouTube embeds, animated award counters, prerendered per-era pages, and generated share images.',
+      'Sabrina Carpenter fan site staged as a variety show, covering every era, the hits, the trophies, and the road to headlining Coachella. A pinned horizontal eras rail re-themes the whole page with each album\'s sampled colors and matched typography, alongside Spotify and YouTube embeds, animated award counters, prerendered per-era pages, and generated share images.',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Lenis'],
     links: [
       { label: 'Live ↗', url: 'https://sabrina-carpenter-fan-website.vercel.app' },
@@ -197,7 +197,7 @@ export const projects: Project[] = [
     title: 'Liwanag — Ben&Ben Fan Site',
     badge: 'Personal',
     description:
-      'Unofficial tribute to Filipino folk-pop band Ben&Ben, built around light as a motif. Traces their story from The Benjamins to a nine-piece band, with a profile for each member in their own signature color, a discography where each era recolors the page in its cover\'s palette, Spotify and YouTube embeds, and a live stages timeline. Every fact is sourced, and each page is prerendered to static HTML before hydrating.',
+      'Fan site for Filipino folk-pop band Ben&Ben, built around light as a motif. Traces their story from The Benjamins to a nine-piece band, with a profile for each member in their own signature color, a discography where each era recolors the page in its cover\'s palette, Spotify and YouTube embeds, and a live stages timeline. Every fact is sourced, and each page is prerendered to static HTML before hydrating.',
     tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'GSAP', 'Lenis'],
     links: [
       { label: 'Live ↗', url: 'https://ben-and-ben-fanpage.vercel.app' },
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     title: 'Dogshow Divas — Podcast Fan Site',
     badge: 'Personal',
     description:
-      'Unofficial one-page fan site for Dogshow Divas, the Taglish comedy podcast from Baus Rufo and Macoy Dubs. Styled after the show\'s royal-blue stage curtains and torn-paper thumbnail labels, it covers the show\'s timeline, flip-card host chapters with a Baus vs. Macoy toggle, a dictionary of the show\'s slang, an episode grid with a guest filter, and live show posters. YouTube and Spotify embeds load only on play, and a plain-HTML loader paints before any JavaScript runs.',
+      'One-page fan site for Dogshow Divas, the Taglish comedy podcast from Baus Rufo and Macoy Dubs. Styled after the show\'s royal-blue stage curtains and torn-paper thumbnail labels, it covers the show\'s timeline, flip-card host chapters with a Baus vs. Macoy toggle, a dictionary of the show\'s slang, an episode grid with a guest filter, and live show posters. YouTube and Spotify embeds load only on play, and a plain-HTML loader paints before any JavaScript runs.',
     tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Lenis'],
     links: [{ label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/Dogshow-Divas-Fansite' }],
   },
