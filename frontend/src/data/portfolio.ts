@@ -204,6 +204,15 @@ export const projects: Project[] = [
       { label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/Ben-and-ben-Fanpage' },
     ],
   },
+  {
+    id: 14,
+    title: 'Dogshow Divas — Podcast Fan Site',
+    badge: 'Personal',
+    description:
+      'Unofficial one-page fan site for Dogshow Divas, the Taglish comedy podcast from Baus Rufo and Macoy Dubs. Styled after the show\'s royal-blue stage curtains and torn-paper thumbnail labels, it covers the show\'s timeline, flip-card host chapters with a Baus vs. Macoy toggle, a dictionary of the show\'s slang, an episode grid with a guest filter, and live show posters. YouTube and Spotify embeds load only on play, and a plain-HTML loader paints before any JavaScript runs.',
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Lenis'],
+    links: [{ label: 'GitHub ↗', url: 'https://github.com/Npaxicsejismundo/Dogshow-Divas-Fansite' }],
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [
